@@ -18,11 +18,12 @@ app.use(express.static('public'));
 
 // ROUTES
 app.use('/', require('./routes/index'));
+app.use('/clogs', require('./routes/clogs'));
 
 // 404 HANDLER
-app.use(function(req, res){
-  res.status(404).render('404')
-})
+// app.use(function(req, res){
+//   res.status(404).render('404')
+// })
 
 app.listen(PORT, function(){
   console.log('Listening on port ', PORT);
