@@ -9,7 +9,6 @@ function init() {
 
 function deleteClog(e){
   console.log(e.target);
-
 }
 
 function addClog() {
@@ -30,7 +29,7 @@ function addClog() {
   })
   .fail(function(err){
     console.error(err);
-  })
+  });
 }
 
 function clogRow(clog) {
