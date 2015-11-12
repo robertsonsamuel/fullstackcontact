@@ -8,7 +8,7 @@ html(lang="en")
 
   body
     .container
-      - var properties = ['name', 'cost', 'quality', 'material']
+      - var properties = ['Name', 'Phone', 'Email']
       .row
         h1= title
       .row
@@ -23,15 +23,38 @@ html(lang="en")
               each prop in properties
                 th= prop
               th: th
-          tbody#clogList
-            each item, index in items
+          tbody#contactList
+            each contacts, index in people
               tr
                 each prop in properties
-                  td(class= prop, id= prop)= items[index][prop]
+                  td(class= prop, id= prop)= people[index][prop]
                 td.edit.text-center
-                  i.fa.fa-pencil-square-o.fa-lg
+                  i.fa.fa-pencil-square-o.fa-lg(data-toggle="modal" data-target="#formModal")
                 td.delete.text-center
                   i.fa.fa-trash-o.fa-lg
 
-    script(src='bower_components/jquery/dist/jquery.min.js')
-    script(src='js/clogs/main.js')
+      #contactEdit.modal.fade(role = 'dialog')
+        .modal-dialog
+        .modal-content
+          .modal-body
+            | name: 
+            br
+            input#NameModal(type='text')
+            br
+            |             phone:
+            br
+            input#PhoneModal(type='text')
+            br
+            |             email: 
+            br
+            input#EmailModal(type='text')
+            br
+            br
+            button(type="button" class="btn btn-default" data-dismiss="modal") Cancel 
+            button#saveContact.btn.btn-primary(type='button', data-dismiss='modal') Save Contact
+              
+
+  script(src='bower_components/jquery/dist/jquery.min.js')
+  script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
+  script(src='js/contacts/main.js')
+            

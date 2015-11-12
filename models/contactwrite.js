@@ -1,3 +1,6 @@
+/* global $:false, console:false, require:false */
+// moodel js
+
 'use strict';
 
 var fs = require('fs');
@@ -14,11 +17,33 @@ ContactList.find = function(cb) {
   });
 };
 
-ContactList.create = function(clog, cb) {
+ContactList.create = function(person, cb) {
   ContactList.find(function(err, contacts){
-    contacts.push(clog);
+    contacts.push(person);
     var data = JSON.stringify(contacts);
     fs.writeFile(db, data, cb);
+  });
+};
+
+
+ContactList.destroy = function(index, cb){
+  ContactList.find(function(err, contacts){
+    if(err) return cb(err);
+    contacts.splice(index.value,1);
+    var data = JSON.stringify(contacts);
+    fs.writeFile(db,data);
+  });
+};
+
+ContactList.update = function(person,cb){
+  ContactList.find(function(err,contacts){
+    if (err) return cb(err);
+   // person = { Name: '5555', Phone: '5555', Email: '5555', index: '1' }
+  console.log('contacts from model',person);
+   contacts.splice(parseInt(person.index),1,person);
+   var data = JSON.stringify(contacts);
+   fs.writeFile(db,data);
+   
   });
 };
 

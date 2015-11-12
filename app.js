@@ -1,3 +1,4 @@
+/*global $:false, console:false, require:false */
 'use strict';
 
 var PORT = process.env.PORT || 3000;
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 // ROUTES
 app.use('/', require('./routes/index'));
 app.use('/contacts', require('./routes/contacts'));
+
 
 // 404 HANDLER
 // app.use(function(req, res){
