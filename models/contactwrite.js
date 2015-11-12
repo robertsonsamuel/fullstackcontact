@@ -38,7 +38,6 @@ ContactList.destroy = function(index, cb){
 ContactList.update = function(person,cb){
   ContactList.find(function(err,contacts){
     if (err) return cb(err);
-   // person = { Name: '5555', Phone: '5555', Email: '5555', index: '1' }
   console.log('contacts from model',person);
    contacts.splice(parseInt(person.index),1,person);
    var data = JSON.stringify(contacts);

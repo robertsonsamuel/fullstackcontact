@@ -14,12 +14,11 @@ function init() {
 
 function launchModal () {
   $('#contactEdit').modal('show'); 
-  let $thisRow = $(this).closest('tr'); // jshint ignore:line
+  let $thisRow = $(this).closest('tr'); 
   index.value = $thisRow.index();
 }
 
 function editContact () {
-  //console.log(index.value);
   var person = {};
   person.Name = $('input#NameModal').val();
   person.Phone = $('input#PhoneModal').val();
@@ -47,14 +46,14 @@ function editContact () {
 
 function deleteContact(){
   let index={};
-  let $thisRow = $(this).closest('tr'); // jshint ignore:line
+  let $thisRow = $(this).closest('tr'); 
   index.value  = $thisRow.index();
   
   $.ajax({
     url:'/contacts/delete',
     type:'DELETE',
     data: index
-  }).done($(this).parent('tr').remove());  // jshint ignore:line
+  }).done($(this).parent('tr').remove());  
 }
 
 
